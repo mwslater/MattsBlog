@@ -1,0 +1,9 @@
+{
+  "name": "matts-blog",
+  "version": "0.0.0",
+  "description": "MattsBlog",
+  "main": "server.js",
+  "author": {
+    "name": "Matt"
+  }
+}
