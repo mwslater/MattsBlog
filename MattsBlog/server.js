@@ -3,8 +3,10 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mattblog');
+mongoose.Promise = global.Promise; //Slience the promise depreciation warning
+mongoose.connect('mongodb://localhost/mattblog');  //Connects to the database
 
+//Schema for the MongoDB Database that stores the posts
 var PostSchema = mongoose.Schema({
     title: { type: String, required: true },
     body: String,
@@ -17,12 +19,14 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+//Routes for the CRUD operations
 app.post("/api/blogpost", createPost);
 app.get("/api/blogpost", getAllPosts);
 app.get("/api/blogpost/:id", getPostById);
 app.delete("/api/blogpost/:id", deletePost);
 app.put("/api/blogpost/:id", updatePost);
 
+//Function for updating posts allowing them to keep the same post ID
 function updatePost(req, res) {
     var postId = req.params.id;
     var post = req.body;
@@ -41,8 +45,9 @@ function updatePost(req, res) {
         );
 }
 
+//Function for getting a specific post from the DB
 function getPostById(req, res) {
-    var posId = req.params.id;
+    var postId = req.params.id;
     PostModel
         .findById(postId)
         .then(
@@ -55,6 +60,7 @@ function getPostById(req, res) {
         );
 }
 
+//Function for deleting a post from the DB
 function deletePost(req, res) {
     var postId = req.params.id;
     PostModel
@@ -69,6 +75,7 @@ function deletePost(req, res) {
         );
 }
 
+//Function for displaying all posts from the DB
 function getAllPosts(req, res) {
     PostModel
         .find()
@@ -82,9 +89,9 @@ function getAllPosts(req, res) {
         );
 }
 
+//Function for creating a post in the DB
 function createPost(req, res) {
     var post = req.body;
-    console.log(post);
     PostModel
         .create(post)
         .then(
