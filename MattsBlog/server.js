@@ -15,7 +15,7 @@ var PostSchema = mongoose.Schema({
 
 var PostModel = mongoose.model("PostModel", PostSchema);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));  //establish static server for front end components
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -106,4 +106,4 @@ function createPost(req, res) {
     
 }
 
-app.listen(3000);
+app.listen(3000);  //sets up server to listen on port 3000

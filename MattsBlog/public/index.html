@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="BlogApp">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap.min.css"> <!--Customized version of Bootstrap-->
+    <script src="https://use.fontawesome.com/86216c25d8.js"></script> <!--Used for icons.-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="app.js"></script>
     <meta charset="UTF-8">
@@ -14,14 +15,14 @@
 
     <input ng-model="post.title" class="form-control" placeholder="title" />
     <textarea ng-model="post.body" class="form-control" placeholder="body"></textarea>
-    <button ng-click="createPost(post)" class="btn btn-primary btn-block">Post</button>
+    <button ng-click="createPost(post)" class="btn btn-danger btn-block">Post</button>
     <button ng-click="updatePost(post)" class="btn btn-success btn-block">Update</button>
 
 <div ng-repeat="post in posts">
     <h2>
         {{post.title}}
-        <a ng-click="editPost(post._id)" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a ng-click="deletePost(post._id)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        <a ng-click="editPost(post._id)" class="pull-right"><i class="fa fa-pencil-square"></i></a>
+        <a ng-click="deletePost(post._id)" class="pull-right"><i class="fa fa-window-close"></i></a>
     </h2>
     <em>{{post.posted}}</em>
     <p>

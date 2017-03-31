@@ -1,11 +1,12 @@
 {
   "name": "matts-blog",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "MattsBlog",
   "main": "server.js",
   "author": {
     "name": "Matt"
   },
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
